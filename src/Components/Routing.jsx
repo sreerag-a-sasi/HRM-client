@@ -8,7 +8,7 @@ function Routing() {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/get-details" element={<GetDetails />} />
+        <Route path="/GetDetails" element={<GetDetails />} />
       </Routes>
     </Router>
   );
