@@ -11,10 +11,10 @@ function Login() {
   const navigate = useNavigate();
 
   const login = async (event) => {
-    try {
-      event.preventDefault();
-      console.log("Login ...");
+    event.preventDefault();
+    console.log("Login ...");
 
+    try {
       const datas = {
         email,
         password,
@@ -30,7 +30,7 @@ function Login() {
       if (response.data.success && token) {
         localStorage.setItem('token', token);
         alert(response.data.message);
-        navigate('/GetDetails'); // Navigate to the GetDetails page
+        navigate('http://13.233.4.160:80/GetDetails'); // Navigate to the GetDetails page
       } else {
         alert(response.data.message);
       }
