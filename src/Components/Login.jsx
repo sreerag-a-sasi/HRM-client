@@ -11,26 +11,32 @@ function Login() {
   const navigate = useNavigate();
 
   const login = async (event) => {
-    event.preventDefault();
-    console.log("Login ...");
-
     try {
+      event.preventDefault();
+      console.log("Login ...");
+
       const datas = {
         email,
         password,
       };
 
-      const response = await axios.post('http://13.233.4.160:80/login', datas);
+      const response = await axios.post('/login', datas);
 
       console.log("response :", response);
+      console.log("response :", response.data);
+      console.log("response :", response.status);
+      console.log("response :", response.headers);
+      console.log("response :", response.success);
 
       const token = response.data.data;
-      console.log("token : ", token);
+      console.log("token details : ", token);
+      
 
       if (response.data.success && token) {
         localStorage.setItem('token', token);
         alert(response.data.message);
-        navigate('http://13.233.4.160:80/GetDetails'); // Navigate to the GetDetails page
+        console.log("redirecting to the users page...");
+        navigate('/getUsersData'); // Navigate to the GetDetails page
       } else {
         alert(response.data.message);
       }
